@@ -41,13 +41,19 @@ User.remove({
     if (err)
       return console.error(err);
 
-    console.log('User successfully removed from database');
+    res.send('User successfully removed from database');
     res.status(200).send();
   });
   });
-  router.get('/alluser',(req,res)=>{
-      User.find({})
-  })
+  router.get('/allusers',async (req,res)=>{
+      User.find({},function(err,user){
+          if(err){
+              res.send('denied');
+              next();
+          }
+          res.json(user)
+      });
+  });
 
 
 module.exports=router;
