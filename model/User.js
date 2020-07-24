@@ -33,7 +33,7 @@ const userSchema=new mongoose.Schema({
         type:Array,
         "default":[],
         max:1024,
-        min:6
+        min:1
     },
     budget:{
         type:Number,
