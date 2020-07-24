@@ -33,4 +33,21 @@ router.post('/login',async (req,res)=>{
 
    // res.send("Logged In");
 });
+router.delete('/delete/:id',(req,res)=>{
+User.remove({
+    _id: req.params.id,
+    
+  }, function (err, user) {
+    if (err)
+      return console.error(err);
+
+    console.log('User successfully removed from database');
+    res.status(200).send();
+  });
+  });
+  router.get('/alluser',(req,res)=>{
+      User.find({})
+  })
+
+
 module.exports=router;
